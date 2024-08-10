@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting</title>
+
+    <script>
+        const targetDate = new Date("2024-10-08T00:00:00");
+// Define a function to update the countdown timer
+function updateCountdown() {
+  // Get the current date and time
+  const currentDate = new Date();
+  // Calculate the time difference between the target date and the current date
+  const timeDifference = targetDate.getTime() - currentDate.getTime();
+  // Convert the time difference to seconds
+  const totalSeconds = Math.floor(timeDifference / 1000);
+  // Calculate the remaining hours, minutes, and seconds
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = Math.floor(totalSeconds % 60);
+  // Display the countdown timer
+  document.getElementById("here").innerHTML = `${hours} hours, ${minutes} minutes, ${seconds} seconds <br>To Go`
+ // console.log();
+  // Check if the countdown has reached zero
+  if (totalSeconds > 0) {
+    // Call the updateCountdown function again after 1 second
+    setTimeout(updateCountdown, 1000);
+  } else {
+     document.getElementById("there").innerHTML = `It was ${(-1)*hours} hours,${(-1)*minutes} minutes, ${(-1)*seconds} seconds ago`
+    document.getElementById("here").innerHTML = `<img width = "412px" src="onday.gif">`
+    console.log("Countdown has ended");
+  }
+}
+// Call the updateCountdown function initially
+</script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pinyon+Script&family=Satisfy&display=swap');
+
+    body{
+        background-color: #DEAC80;
+        margin: 0px;
+    }
+    #click{
+        padding: 10%;
+        margin: 130px;
+        margin-bottom: -70px;
+        border-radius: 50%;
+        height:  100px;
+        width: 150px;
+        font-family: "Dancing Script", cursive;
+        border: none;
+        background-color:bisque ;
+        box-shadow: 0px 0px 10px rgb(173, 105, 105);
+    }
+    #here{
+        text-align: center;
+        font-family: "Dancing Script", cursive;
+        margin-bottom: 550px;
+    }
+    #there{
+        text-align: center;
+    }
+    #im{
+        width: 150px;
+        margin-left: 32%;
+    }
+    #back{
+        text-decoration: none;
+        color: brown;
+        font-family: 'Dancing Script', cursive;
+        
+        width: 200px;
+        margin: 45%;
+        
+    }
+</style>
+</head>
+<body>
+    <button id = "click" onclick="updateCountdown()">Click</button>
+    <img id = "im" src="count.png">
+    <p id = "there"></p>
+    <p id = "here"></p>
+    <a  id = "back" href="index.html">Home</a>
+    
+    
+</body>
+</html>
